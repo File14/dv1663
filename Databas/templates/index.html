@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Restaurant BTH - Menu</title>
+</head>
+
+<body>
+    <main id="container">
+        <header>
+            <nav>
+                <a href="index.html" id="logo-container">
+					<img src="/static/img/bth-logo.png" alt="logo" id="logo">
+                </a>
+                <ul id="nav-list">
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/reservation" class="nav-link">
+                            Make reservation
+                        </a>
+                    </li>
+                    <li class="nav-item login-item">
+                        <a href="/staff" class="nav-link">
+                            Staff login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div id="banner-container">
+            <div id="banner">
+                <div id="welcome-container">
+                    <h1>
+                        Welcome to Restaurant BTH!
+                    </h1>
+                    <p>
+                        Savor sustainable delights at BTH restaurant, where eco-friendly ingredients and culinary innovation
+                        unite for an unforgettable dining experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <section id="menu-container" class="">
+            <div id="menu" class="bg-3">
+                <div id="menus-section">
+                    <h2>
+                        Menu
+                    </h2>
+                    <ul>
+                        {% for meal in meals %}
+                        <li>
+                            <b>{{meal[0]}} - {{ meal[1] }}</b> - {{ meal[3] }} kr
+                            <br>
+                                {{ meal[2] }}
+                            </br>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

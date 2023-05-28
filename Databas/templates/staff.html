@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Restaurant BTH - Staff</title>
+</head>
+<body>
+    <main id="container">
+        <header>
+            <nav>
+                <a href="../index.html" id="logo-container">
+                    <img src="/static/img/bth-logo.png" alt="logo" id="logo">
+                </a>
+                <ul id="nav-list">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/reservation" class="nav-link">
+                            Make reservation
+                        </a>
+                    </li>
+                    <li class="nav-item login-item">
+                        <a href="/staff" class="nav-link">
+                            Staff login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="bg-3 top-section">
+            <div class="container">
+                <h1>
+                    Select view
+                </h1>
+                <div class="center containter button-container">
+                    <a href="/waiter" class="button">
+                        Waiter/Waitress View
+                    </a>
+                    <a href="/kitchen" class="button">
+                        Kitchen View
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="bg-3 top-section">
+            <div class="center container">
+                <h2>Today's Status</h2>
+                <h3>Orders</h3>
+                <p class="center-text">{{ current_orders }}</p>
+                <h3>Cooked Meals</h3>
+                <p class="center-text">{{ cooked_orders }}</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

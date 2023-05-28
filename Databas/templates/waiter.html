@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Restaurant BTH - Waiter/waitress View</title>
+</head>
+<body>
+    <main id="container">
+        <header>
+            <nav>
+                <a href="../index.html" id="logo-container">
+					<img src="/static/img/bth-logo.png" alt="logo" id="logo">
+                </a>
+                <ul id="nav-list">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/reservation" class="nav-link">
+                            Make reservation
+                        </a>
+                    </li>
+                    <li class="nav-item login-item">
+                        <a href="/staff" class="nav-link">
+                            Staff login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="waiter-container" class="bg-3 top-section">
+            <h2>Add Order</h2>
+            <form method="POST" action="/waiter">
+                <label for="reservation_id">Rerservation ID:</label>
+                <input type="text" name="reservation_id" required>
+                
+                <label for="meal_id">Menu ID:</label>
+                <input type="text" name="meal_id" required>
+                
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" required>
+            
+                <label for="special_requests">Special Requests:</label>
+                <br>
+                <textarea name="special_requests"></textarea>
+                <br>
+                <input type="submit" name="add-order-btn" value="Add Order" class="button">
+            </form>
+            {% if order_message %}
+            <p class="space-top">{{ order_message }}</p>
+            {% endif %}
+        </section>
+        <section id="waiter-container" class="bg-3 top-section">
+            <h2>Today's Reservations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reservation ID</th>
+                        <th>Customer Name</th>
+                        <th>Guests</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation[0] }}</td>
+                        <td>{{ reservation[3] }}</td>
+                        <td>{{ reservation[2] }}</td>
+                        <td>{{ reservation[1] }}</td>
+                        <td>
+                            <form action="/waiter" method="POST">
+                                <input type="hidden" name="reservation_id" value="{{ reservation[0] }}">
+                                <button type="submit" name="check-price-btn" class="button">Check Total Price</button>
+                                {% if reservation[0] == id %}
+                                <span class="button-text"><b>Total: {{ price_message }}</b></span>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </section>
+    </main>
+</body>
+</html>
